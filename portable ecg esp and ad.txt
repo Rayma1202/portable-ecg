@@ -1,0 +1,28 @@
+#include <Wire.h>
+
+// Define AD8232 pins
+#define AD8232_RA_PIN    34  // Right Arm (RA) electrode pin
+#define AD8232_LA_PIN    35  // Left Arm (LA) electrode pin
+#define AD8232_OUT_PIN   36  // Output pin
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(AD8232_RA_PIN, INPUT);
+  pinMode(AD8232_LA_PIN, INPUT);
+  pinMode(AD8232_OUT_PIN, INPUT);
+}
+
+void loop() {
+  int raVoltage = analogRead(AD8232_RA_PIN);
+  int laVoltage = analogRead(AD8232_LA_PIN);
+  int outputVoltage = analogRead(AD8232_OUT_PIN);
+
+  Serial.print("RA Voltage: ");
+  Serial.println(raVoltage);
+  Serial.print("LA Voltage: ");
+  Serial.println(laVoltage);
+  Serial.print("Output Voltage: ");
+  Serial.println(outputVoltage);
+
+  delay(1000);
+}
